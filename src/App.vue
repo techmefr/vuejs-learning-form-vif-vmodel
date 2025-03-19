@@ -25,6 +25,10 @@ const addCharacter = () => {
     newCharacter.value = ''
   }
 }
+
+const removeCharacter = (character) => {
+  characters.value = characters.value.filter((item) => item.id !== character.id)
+}
 </script>
 
 <template>
@@ -46,7 +50,10 @@ const addCharacter = () => {
     <div>
       <h2>Personnages</h2>
       <ul>
-        <li v-for="character in characters" :key="character.id">{{ character.text }}</li>
+        <li v-for="character in characters" :key="character.id">
+          {{ character.text }} 
+          <button @click="removeCharacter(character)">X</button>
+        </li>
       </ul>
       <input type="text" v-model="newCharacter">
       <button @click="addCharacter">Add character</button>
