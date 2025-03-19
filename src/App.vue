@@ -1,45 +1,57 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 
-//var
-const msg = ref('Tuto Vue.js');
-const themeMode = ref(false);
+//Var
+const msg = ref('Tuto Vue.Js')
+const items = ref(['Item 1', 'Item 2', 'Item 3'])
+let id = 0
 
-// computed property
-const jour = computed(() => themeMode.value);
+const goodItems = ref([
+  { id: id++, text: 'Olivier' },
+  { id: id++, text: 'Tom' },
+  { id: id++, text: 'Marc' }
+])
+
+const newCharacter = ref('');
+const characters = ref([
+  { id: id++, text: 'Dark' },
+  { id: id++, text: 'Luke' }
+])
 
 //Func
-const changeThemeMode = () => {
-  themeMode.value = !themeMode.value;
-};
+const addCharacter = () => {
+  if (newCharacter.value.trim()) {
+    characters.value.push({ id: id++, text: newCharacter.value })
+    newCharacter.value = ''
+  }
+}
 </script>
 
 <template>
-  <main id="main" :class="!themeMode ? 'nuit' : ''">
+  <main id="main">
     <h1>{{ msg }}</h1>
-    <!-- Visible ou non dans le dom  -->
-    <h2 v-if="themeMode == true">Jour</h2>
-    <h2 v-else>Nuit</h2>
-    <!-- Equivalent à display none  -->
-    <h3 v-show="themeMode">Pomme</h3>
-    <h3 v-show="!themeMode">Cannelle</h3>
+    <ul>
+      <li>Toto</li>
+      <li>Titi</li>
+    </ul>
 
-    <button @click="changeThemeMode">Changer</button>
+    <ul>
+      <li v-for="item in items" :key="item">{{ item }}</li>
+    </ul>
+
+    <ul>
+      <li v-for="goodItem in goodItems" :key="goodItem.id">{{ goodItem.text }}</li>
+    </ul>
+
+    <div>
+      <h2>Personnages</h2>
+      <ul>
+        <li v-for="character in characters" :key="character.id">{{ character.text }}</li>
+      </ul>
+      <input type="text" v-model="newCharacter">
+      <button @click="addCharacter">Add character</button>
+    </div>
   </main>
 </template>
 
-<style scoped>
-#main {
-  background: lightblue;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
-.nuit {
-  background: darkslategrey !important;
-  color: white;
-}
-</style>
+<style scoped></style>
