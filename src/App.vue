@@ -16,10 +16,13 @@ const changeThemeMode = () => {
 <template>
   <main>
     <h1>{{ msg }}</h1>
+    <!-- Visible ou non dans le dom  -->
     <h2 v-if="themeMode == true">Jour</h2>
     <h2 v-else>Nuit</h2>
+    <!-- Equivalent à display none  -->
     <h3 v-show="themeMode">Pomme</h3>
     <h3 v-show="!themeMode">Cannelle</h3>
+    
     <button @click="changeThemeMode">Changer</button>
   </main>
 </template>
