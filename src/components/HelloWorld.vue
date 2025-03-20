@@ -8,7 +8,7 @@ const msg = ref('Hello from component')
 <template>
     <h1>{{ msg }}</h1>
     <!-- Utilisation de la variable msg -->
-    <SubComp> Example : {{ msg.toUpperCase() }}</SubComp>
+    <SubComp><i> Example :</i> {{ msg.toUpperCase() }}</SubComp>
 
     <!-- Utilisation du slot de l'enfant -->
     <SubComp> </SubComp>
