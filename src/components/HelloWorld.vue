@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue';
+import SubComp from './SubComp.vue';
 
 const msg = ref('Hello from component')
 
@@ -7,6 +8,11 @@ const msg = ref('Hello from component')
 
 <template>
     <h1>{{ msg }}</h1>
+<SubComp/>
+<SubComp msg="Toto"/>
+<!-- on peut passer une variable dans la props -->
+<SubComp :msg="msg"/>
+
 </template>
 
 <style scoped>
