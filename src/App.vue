@@ -1,5 +1,6 @@
 <script setup>
 import { ref, watch } from 'vue';
+import HelloWorld from './components/HelloWorld.vue';
 
 const msg = ref('Tuto Vue.js');
 const question = ref('');
@@ -27,6 +28,7 @@ watch(question, async (newQuestion, oldQuestion) => {
 <template>
   <main id="main">
     <h1>{{ msg }}</h1>
+    <HelloWorld/>
     <p>Ask a yes/no question:</p>
     <input v-model="question" :disabled="loading" type="text">
     <p>{{ answer }}</p>
